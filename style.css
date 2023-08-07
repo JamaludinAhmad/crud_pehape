@@ -1,0 +1,30 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-size: large;
+}
+
+table{
+    margin: auto;
+    /* margin: auto; */
+    background-color: blue;
+}
+
+table .baris td{
+    background-color: aqua;
+    width: 200px;
+    text-align: center;
+}
+
+.navbar{
+    background-color: rgb(117, 126, 126);
+}
+.navbar .isi{
+    text-align: center;
+    margin: 0 250px;
+    background-color: rgb(21, 167, 118);
+}
+
+.navbar .isi a{
+    padding: 25px;
+}

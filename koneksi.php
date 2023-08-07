@@ -9,15 +9,7 @@
     if(!$conn){
         echo ("tidak terkoneksi");
     }
-
-    echo("koneksi berhasil");
-
-    // $result = mysqli_query($conn, "SELECT * FROM tbl_kursus");
-
-    //     while($data = mysqli_fetch_array($result)){
-    //         echo $data['nama_kursus'];
-    //         echo ('<br/>');
-    //     }
+    // echo("koneksi berhasil");
     
     // mysqli_close($conn);
 ?>
