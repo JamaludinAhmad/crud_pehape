@@ -5,28 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="isi">
+            <a href="tampildepan.php">Tampil Data</a>
+            <a href="tambah.php">Tambah Data</a>
+        </div>
+    </nav>
+
     
     <form action="tambah.php" method="post" name="form_tambah">
-        <p>masukan id_kursus: <input type="text" name="id"></p>
-        <p>masukan nama kursus: <input type="text" name="namakursus"></p>
-        <p>masukan mentor dengan id : <input type="text" name="idmentor"></p>
-        <p>masukan kategori: <input type="text" name="kategori"></p>
+        <p>masukan nama: <input type="text" name="nama"></p>
+        <p>masukan alamat <input type="text" name="alamat"></p>
+        <p>masukan umur <input type="text" name="umur"></p>
         <input type="submit" name="Submit">
     </form>
 
     <?php
 
         if(isset($_POST['Submit'])){
-            $id = $_POST['id'];
-            $name = $_POST['namakursus'];
-            $idmen = $_POST['idmentor'];
-            $kategori = $_POST['kategori'];
+            $name = $_POST['nama'];
+            $alamat = $_POST['alamat'];
+            $umur = $_POST['umur'];
 
             include_once('koneksi.php');
-            $qury = ("INSERT INTO tbl_kursus VALUES('$id', '$name', '$idmen', '$kategori')");
-            echo($qury);
+            $qury = ("INSERT INTO data(nama, alamat, umur) VALUES('$name', '$alamat', '$umur')");
+            // echo($qury);
             $result = mysqli_query($conn, $qury);
             // echo('eaeaea');
         }

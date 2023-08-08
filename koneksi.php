@@ -1,6 +1,6 @@
 <?php
     $servername = "localhost";
-    $database = "kursusonline";
+    $database = "manusia";
     $username = "root";
     $password = "";
 

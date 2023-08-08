@@ -13,8 +13,6 @@
         <div class="isi">
             <a href="tampildepan.php">Tampil Data</a>
             <a href="tambah.php">Tambah Data</a>
-            <a href="tambah.html">Ubah Data</a>
-            <a href="tambah.html">Delete Data</a>
         </div>
     </nav>
 
@@ -23,9 +21,12 @@
         <table border="1">
             <thead>
                 <tr class="baris">
-                    <td>id_kursus</td>
-                    <td>nama_kursus</td>
-                    <td>id_mentor</td>
+                    <td>id</td>
+                    <td>nama</td>
+                    <td>alamat</td>
+                    <td>umur</td>
+                    <td>hapus</td>
+                    <td>edit</td>
                 </tr>
             </thead>
     
@@ -33,13 +34,18 @@
                 <?php
                     include_once('koneksi.php');
                     
-                    $hasil = mysqli_query($conn, "SELECT * FROM tbl_kursus");
+                    $hasil = mysqli_query($conn, "SELECT * FROM data");
     
                     while($data = mysqli_fetch_array($hasil)){
                         echo ("<tr class=\"baris\">");
-                        echo ("<td>".$data['id_kursus']."</td>");
-                        echo ("<td>".$data['nama_kursus']."</td>");
-                        echo ("<td>".$data['id_mentor']."</td>");
+                        echo ("<td>".$data['id']."</td>");
+                        echo ("<td>".$data['nama']."</td>");
+                        echo ("<td>".$data['alamat']."</td>");
+                        echo ("<td>".$data['umur']."</td>");
+                        $link = "delete.php?id=".$data['id'];
+                        echo ('<td><a href="'.$link.'"<p>hapus</p></a></td>');
+                        $linkedit = "edit.php?id=$data[id]";
+                        echo ('<td><a href="'.$linkedit.'"<p>edit</p></a></td>');
                         echo ("</tr>");
                     }
     
