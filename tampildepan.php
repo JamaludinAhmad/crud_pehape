@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="isi">
             <a href="tampildepan.php">Tampil Data</a>
-            <a href="tambah.html">Tambah Data</a>
+            <a href="tambah.php">Tambah Data</a>
             <a href="tambah.html">Ubah Data</a>
             <a href="tambah.html">Delete Data</a>
         </div>
