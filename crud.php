@@ -43,6 +43,20 @@
             
         }
 
+        function get_data_by_id($id){
+            $query = "SELECT * FROM data WHERE id = '$id'";
+            
+            $result = mysqli_query($this->conn, $query);
+            if($result){
+                $data = mysqli_fetch_assoc($result);
+                mysqli_free_result($result);
+                return $data;
+            }
+            else{
+                echo "data mungkin tidak ada";
+            }
+        }
+
         function delete_data_by_id($id){
             $query = "DELETE FROM data WHERE id = ?";
 

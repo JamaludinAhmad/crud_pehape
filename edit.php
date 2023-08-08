@@ -1,5 +1,6 @@
 <?php
-    include_once('koneksi.php');
+    include_once('crud.php');
+    $aksdata = new Crud();
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +20,13 @@
             <a href="tambah.php">Tambah Data</a>
         </div>
     </nav>
+
     <?php
         $id = $_GET['id'];
-
-        $query = "SELECT * FROM data WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-
-        if($data = mysqli_fetch_array($result)){
-            $namaasal = $data['nama'];
-            $alamatasal = $data['alamat'];
-            $umurasal = $data['umur'];
-        }
+        $hasil = $aksdata->get_data_by_id($id);
+        $namaasal = $hasil['nama'];
+        $alamatasal = $hasil['alamat'];
+        $umurasal = $hasil['umur'];
     ?>
         
     <form action="edit.php?id=<?php echo ($id);?>" method="post" name="form_edit">
@@ -41,32 +38,18 @@
 
     <?php
         if(isset($_POST['Submit'])){
-            $name = $_POST['nama'];
+            $nama = $_POST['nama'];
             $alamat = $_POST['alamat'];
             $umur = $_POST['umur'];
+            $aksdata->ubah_data_by_id($id, $nama, $alamat, $umur);
 
-            include_once('koneksi.php');
-            $qury = "UPDATE data SET nama = '$name', alamat = '$alamat', umur = '$umur' WHERE id = '$id'";
-            // echo($qury);
-            $result = mysqli_query($conn, $qury);
-
-            if($result){
-                echo "<script>
+            echo"
+            <script>
                 alert('data berhasil diedit');
-                window.location.href='tampildepan.php';
-                </script>";
-
-            }
-            else {
-                echo "<script>
-                alert('data gagal diedit');
-                window.location.href='tampildepan.php';
-                </script>";
-            }
-            // Header("Location: tampildepan.php");
-            // echo('eaeaea');
+                window.location.href= 'tampildepan.php';
+            </script>
+            ";
         }
-
     ?>
 
 </body>

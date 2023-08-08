@@ -1,3 +1,8 @@
+<?php
+    include ("crud.php");
+    $aksdata = new Crud();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,26 +36,16 @@
             $alamat = $_POST['alamat'];
             $umur = $_POST['umur'];
 
-            include_once('koneksi.php');
-            $qury = ("INSERT INTO data(nama, alamat, umur) VALUES('$name', '$alamat', '$umur')");
-            // echo($qury);
-            $result = mysqli_query($conn, $qury);
-
-            if($result){
-                echo "<script>
-                alert('berhasil ditambah');
+            $aksdata->masukan_data($name, $alamat, $umur);
+            
+            echo "
+                <script>
+                alert('data berhasil dimasukan');
                 window.location.href='tampildepan.php';
-                </script>";
-            }
-            else{
-                echo "<script>
-                alert('data tidak berhasil ditambah, ada kesalahan');
-                window.location.href='tampildepan.php';
-                </script>";
-            }
-            // Header("Location: tampildepan.php");
-            // echo('eaeaea');
+                </script>
+            ";
         }
+
 
     ?>
 

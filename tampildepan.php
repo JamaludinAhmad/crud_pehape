@@ -1,3 +1,8 @@
+<?php
+    include ("crud.php");
+    $aksdata = new Crud();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +26,7 @@
         <table border="1">
             <thead>
                 <tr class="baris">
-                    <td>id</td>
+                    <td>no</td>
                     <td>nama</td>
                     <td>alamat</td>
                     <td>umur</td>
@@ -32,23 +37,25 @@
     
             <tbody>
                 <?php
-                    include_once('koneksi.php');
-                    
-                    $hasil = mysqli_query($conn, "SELECT * FROM data");
-    
-                    while($data = mysqli_fetch_array($hasil)){
-                        echo ("<tr class=\"baris\">");
-                        echo ("<td>".$data['id']."</td>");
-                        echo ("<td>".$data['nama']."</td>");
-                        echo ("<td>".$data['alamat']."</td>");
-                        echo ("<td>".$data['umur']."</td>");
-                        $link = "delete.php?id=".$data['id'];
-                        echo ('<td><a href="'.$link.'"<p>hapus</p></a></td>');
-                        $linkedit = "edit.php?id=$data[id]";
-                        echo ('<td><a href="'.$linkedit.'"<p>edit</p></a></td>');
-                        echo ("</tr>");
-                    }
-    
+                $datas = $aksdata->baca_semua_data();
+
+                $i = 1;
+                foreach($datas as $data){
+                    $linkedit = "edit.php?id=" .$data['id'];
+                    $linkhapus = "delete.php?id=" .$data['id'];
+
+                    echo"
+                        <tr class='baris'>
+                            <td>$i</td>
+                            <td>$data[nama]</td>
+                            <td>$data[alamat]</td>
+                            <td>$data[umur]</td>
+                            <td><a href='$linkhapus'>hapus</a></td>
+                            <td><a href='$linkedit'>edit</a></td>
+                        </tr>
+                    ";
+                    $i++;
+                }
                 ?>
             </tbody>
         </table>
