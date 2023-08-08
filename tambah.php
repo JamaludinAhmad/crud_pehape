@@ -9,6 +9,7 @@
 <body>
     
     <form action="tambah.php" method="post" name="form_tambah">
+        <p>masukan id_kursus: <input type="text" name="id"></p>
         <p>masukan nama kursus: <input type="text" name="namakursus"></p>
         <p>masukan mentor dengan id : <input type="text" name="idmentor"></p>
         <p>masukan kategori: <input type="text" name="kategori"></p>
@@ -18,15 +19,15 @@
     <?php
 
         if(isset($_POST['Submit'])){
+            $id = $_POST['id'];
             $name = $_POST['namakursus'];
-            $id = $_POST['idmentor'];
-            $kategori = (int)$_POST['kategori'];
-
-            echo($name. $id. $kategori);
+            $idmen = $_POST['idmentor'];
+            $kategori = $_POST['kategori'];
 
             include_once('koneksi.php');
-
-            $result = mysqli_query($conn, "INSERT INTO tbl_kursus(nama_kursus,id_mentor,kategori) VALUES('$name','$id','$kategori')");
+            $qury = ("INSERT INTO tbl_kursus VALUES('$id', '$name', '$idmen', '$kategori')");
+            echo($qury);
+            $result = mysqli_query($conn, $qury);
             // echo('eaeaea');
         }
 
