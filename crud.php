@@ -53,9 +53,3 @@
         }
     }
 ?>
-
-<?php
-    $c = New Crud();
-    
-    $c->masukan_data("SAYA", "DI", 94);
-?>
