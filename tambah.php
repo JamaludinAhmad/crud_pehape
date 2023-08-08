@@ -35,6 +35,20 @@
             $qury = ("INSERT INTO data(nama, alamat, umur) VALUES('$name', '$alamat', '$umur')");
             // echo($qury);
             $result = mysqli_query($conn, $qury);
+
+            if($result){
+                echo "<script>
+                alert('berhasil ditambah');
+                window.location.href='tampildepan.php';
+                </script>";
+            }
+            else{
+                echo "<script>
+                alert('data tidak berhasil ditambah, ada kesalahan');
+                window.location.href='tampildepan.php';
+                </script>";
+            }
+            // Header("Location: tampildepan.php");
             // echo('eaeaea');
         }
 

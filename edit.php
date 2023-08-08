@@ -49,7 +49,21 @@
             $qury = "UPDATE data SET nama = '$name', alamat = '$alamat', umur = '$umur' WHERE id = '$id'";
             // echo($qury);
             $result = mysqli_query($conn, $qury);
-            Header("Location: tampildepan.php");
+
+            if($result){
+                echo "<script>
+                alert('data berhasil diedit');
+                window.location.href='tampildepan.php';
+                </script>";
+
+            }
+            else {
+                echo "<script>
+                alert('data gagal diedit');
+                window.location.href='tampildepan.php';
+                </script>";
+            }
+            // Header("Location: tampildepan.php");
             // echo('eaeaea');
         }
 

@@ -6,6 +6,9 @@
     $query = "DELETE FROM data WHERE id = '$id'";
     // echo ($query);
     mysqli_query($conn, $query);
-
-    header("Location:tampildepan.php")
+    echo "<script>
+    alert('berhasil dihapus');
+    window.location.href='tampildepan.php';
+    </script>";
+    // header("Location:tampildepan.php")
 ?>
